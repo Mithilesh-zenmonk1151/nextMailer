@@ -3,6 +3,7 @@ import User from "@/models/userModel";
 const bcrypt = require("bcrypt");
 export const sendEmail = async ({ email, emailType, userId }: any) => {
   try {
+    //nodemailer
     const hashedToken = bcrypt.hash(userId.toString(), 10);
   if(emailType==="VERIFY"){
     await User.findByIdAndUpdate(userId, {
