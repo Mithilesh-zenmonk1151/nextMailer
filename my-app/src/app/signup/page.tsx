@@ -3,22 +3,27 @@ import Link from "next/link";
 import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import toast ,{Toaster} from "react-hot-toast";
+import type { FieldValues } from "react-hook-form";
+
 import axios  from "axios";
+import { useAppDispatch } from "@/store/hooks";
+import { registerUsers } from "@/redux/auth/authAction";
 export default function SignupPage() {
   const router = useRouter();
+  const dispatch=useAppDispatch();
 
   const [user, setUser] = React.useState({
     email: "",
     password: "",
-    username: "",
+    name: "",
+    role:"Admin"
   });
-  console.log("email",user.username);
+  console.log("email",user.name);
   console.log("email",user.email);
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
-  const onSignup = async () => {
+  const onSignup = async (data: FieldValues) => {
     try {
-    const response= await axios.post("/api/user/signup",user);
-    console.log("Signup Success", response.data);
+      dispatch(registerUsers(data));
     toast.success("User Signup Successfully")
     router.push("/login")
     } catch (error:any) {
@@ -31,7 +36,7 @@ export default function SignupPage() {
     if (
       user.email.length > 0 &&
       user.password.length > 0 &&
-      user.username.length > 0
+      user.name.length > 0
     ) {
       setButtonDisabled(false);
     } else {
@@ -44,9 +49,9 @@ export default function SignupPage() {
       <label htmlFor="username">username</label>
       <input
         type="text"
-        value={user.username}
+        value={user.name}
         placeholder="username..."
-        onChange={(e) => setUser({ ...user, username: e.target.value })}
+        onChange={(e) => setUser({ ...user, name: e.target.value })}
         name="username"
         id="username"
         className="text-black"
