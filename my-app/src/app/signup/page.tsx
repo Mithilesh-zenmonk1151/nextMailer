@@ -72,6 +72,7 @@ export default function SignupPage() {
       <button onClick={onSignup}>
         {buttonDisabled ? "No signup" : "Signup"}
       </button>
+      
       <Link href="/signup">Visit signup page</Link>
     </div>
   );

@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import Link from "next/link";
 
 
 export default function LoginPage() {
@@ -25,6 +26,7 @@ export default function LoginPage() {
       toast.error(error.message)
     }
   };
+
   useEffect(()=>{
     if (
       user.email.length > 0 &&
@@ -37,7 +39,7 @@ export default function LoginPage() {
   },[user])
   console.log("email", user.email);
   return (
-    <div>
+    <div className="flex flex-col justify-center items-center h-[100vh] text-start">
       <label htmlFor="email">Email</label>
       <input
         type="email"
@@ -57,6 +59,8 @@ export default function LoginPage() {
         className="text-black"
       />
       <button onClick={onLogin}>Login</button>
+      <Link href="/forgotpassword" className="text-blue-500">Forgot password</Link>
+       
     </div>
   );
 }
