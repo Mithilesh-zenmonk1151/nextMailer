@@ -11,6 +11,4 @@ export async function POST(request:NextRequest){
     const user= await User.findOne({email});
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
-    const upDatedPassword= 
-
 }

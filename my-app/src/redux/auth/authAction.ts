@@ -8,10 +8,12 @@ import registerService from '@/services/authservices/registerservice';
 
 
 
-export const registerUsers = createAsyncThunk(signupType, async (inputs: FieldValues, { rejectWithValue }) => {
+export const registerUsers = createAsyncThunk(signupType, async(user: {name: string, email: string, password: string, role: string}, {rejectWithValue}) => {
     try {
-        console.log(inputs)
-        const response = await registerService(inputs)
+        console.log("iuewfjerowgrtjgkdfs;",user)
+        console.log(user)
+      
+        const response = await registerService({email:user.name,password:user.password, name:user.name,role:user.role})
         const data = response?.data
         console.log(data)
         return data
@@ -20,10 +22,10 @@ export const registerUsers = createAsyncThunk(signupType, async (inputs: FieldVa
         return rejectWithValue(err)
     }
 })
-export const loginUsers = createAsyncThunk(loginType, async (inputs: FieldValues, {rejectWithValue}) => {
+export const loginUsers = createAsyncThunk(loginType, async (user:{email:string,password:string}, {rejectWithValue}) => {
     try{
-        console.log(inputs)
-        const response = await loginService(inputs)
+        console.log("SSSLICCCEEEE UUSSERRS",user)
+        const response = await loginService({email:user.email,password:user.password})
         const data = await response.data
         console.log(data)
         return data

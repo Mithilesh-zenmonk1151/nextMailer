@@ -5,6 +5,7 @@ export async function POST(request: NextRequest) {
   try {
     const respo = await request.json();
     console.log(respo);
+    console.log("LLLLOOOGGGGIIINNN RREEEEQQQUUEST",respo);
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_SERVER_URL}/api/auth/login`,
       respo
