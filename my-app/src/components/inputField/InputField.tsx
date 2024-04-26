@@ -1,6 +1,5 @@
 import { Paper, Stack, TextField } from '@mui/material'
 import React from 'react'
-import "./TextFieldcom.css"
 import { ChangeEvent } from 'react';
 type TextFieldProps={
   placeholder?:string,
@@ -26,7 +25,8 @@ function InputFieldCompo(props: TextFieldProps) {
          onChange={(event: ChangeEvent<HTMLInputElement>)=> setValue(event.target.value)}
          className={customClassName}
          sx={{
-          paddingTop:"14px"
+          paddingTop:"14px",
+          color:"white"
          }}
       />
     </Stack>
