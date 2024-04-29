@@ -2,9 +2,10 @@
 import axios from "axios";
 import type {FieldValues} from "react-hook-form";
 
-const loginService = async (inputs: FieldValues) => {
-    const response = await axios.get("api/user/loggin", inputs)
+const fetchTests = async (inputs: FieldValues) => {
+    console.log("IIINNNPPUUUTT",inputs);
+    const response = await fetch("api/test/gettest", inputs)
     console.log(response)
     return response
 }
-export default loginService
+export default fetchTests

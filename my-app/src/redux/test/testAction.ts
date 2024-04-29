@@ -1,14 +1,17 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { createTestsType, getTestsType } from "./authType";
+import { createTestsType, getTestsType } from "./testType";
 import type { FieldValues } from "react-hook-form";
+import createTestService from "@/services/test/createtestservice";
+import getTestsService from "@/services/test/gettestservice";
+import fetchTests from "@/services/test/gettestservice";
 // import loginService from "@/service/Auth/register.service";
 
 export const createTests = createAsyncThunk(
  createTestsType,
-  async (inputs: FieldValues, { rejectWithValue }) => {
+  async (test:{name:string, totalNumberOfQuestions:number,totalMarks:number,instructions:string, duration:number,userId: string}, { rejectWithValue }) => {
     try {
-      console.log(inputs);
-      const response = await createte(inputs);
+      console.log("Slice wala teststssss",test);
+      const response = await createTestService(test);
       const data = response?.data;
       console.log(data);
       return data;
@@ -19,16 +22,12 @@ export const createTests = createAsyncThunk(
   }
 );
 
-export const loginUsers = createAsyncThunk(
+export const getTests = createAsyncThunk(
   getTestsType,
-  async (inputs: FieldValues, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      console.log(inputs);
-      const response = await loginService(inputs);
-      // console.log(response)
-      const data = await response.data;
-      console.log(data);
-      return data;
+      const response = await fetchTests();
+      return response;
     } catch (err) {
       console.log(err);
       return rejectWithValue(err);

@@ -19,7 +19,7 @@ export default function SignupPage() {
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const onSignup = async () => {
     try {
-      console.log("user",user)
+      console.log("userewt45ty5yrtyhty",user)
       dispatch(registerUsers(user));
       toast.success("User Signup Successfully");
       router.push("/login");

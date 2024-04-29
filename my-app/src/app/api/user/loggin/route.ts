@@ -11,15 +11,20 @@ export async function POST(request: NextRequest) {
       respo
     );
     console.log("res.DATA",res.data.user.token);
+    console.log("REEEEESSSDFGHHJJ DDDAAARRRRATTTTTTA",res.data.user)
+    const loginData=res?.data?.user
     
 const token= res?.data?.user?.token;
+
     if (!res) {
       alert("submitting form failed");
       return;
     }
     const response= NextResponse.json({
         message:"Login Successfull",
-        success:true
+        success:true,
+        loginData
+
     })
 
     response.cookies.set("token", token, { httpOnly: true, path: "/" });

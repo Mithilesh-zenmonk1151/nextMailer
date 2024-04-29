@@ -3,11 +3,21 @@ import axios from "axios"
 import Link from "next/link"
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
-import React from "react";
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { getTests } from "@/redux/test/testAction";
 
 export default function ProfilePage() {
   const [data,setData]= React.useState("nothing")
   const router=useRouter();
+  const userId= useAppSelector((state)=>state.auth?.content?.loginData?.user?.uuid)
+  console.log("Statesssssss",userId);
+  const dispatch=useAppDispatch();
+  useEffect(()=>{
+    dispatch(getTests({userId}));
+
+  },[dispatch])
+  
   const logOut=async()=>{
     try{
       await axios.get("/api/user/logout");
@@ -43,7 +53,7 @@ export default function ProfilePage() {
       <hr/>
       <button className="bg-blue-500 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={logOut}>Logout</button>
       <button className="bg-green-900 mt-4 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" onClick={getUserDetails}>Getuser details</button>
-
+        <h2>{userId}</h2>
     </div>
   )
 }

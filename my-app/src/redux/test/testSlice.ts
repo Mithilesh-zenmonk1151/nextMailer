@@ -1,26 +1,29 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getTests } from './testAction';
+import { createTests, getTests } from './testAction';
 
-export type books = {
+export type tests = {
     id: string,
-    title: string,
-    author: string,
-    genre: string,
-    description: string,
-    stock: number,
-    coverImage: string[]
+   name:string,
+   totalNumberOfQuestions:number,
+   totalMarks:number,
+   instructions:string,
+   duration:number,
+   userId: string;
+
+
+
+
 }
 
 type initialStateProps = {
     isLoading: boolean;
     content: {
-        id: string,
-        title: string,
-        author: string,
-        genre: string,
-        description: string,
-        stock: number ,
-        coverImage: string[]
+        name: string;
+        totalNumberOfQuestions: number;
+        totalMarks: number;
+        instructions: string;
+        duration: number; // Change type to string
+        userId: string;
     }[] 
     error: Object | null;
   };
@@ -29,45 +32,45 @@ type initialStateProps = {
     isLoading: false,
     error: null,
     content: [{
-        id: "",
-        title: "",
-        author: "",
-        genre: "",
-        description: "",
-        stock: 0,
-        coverImage: [""]
+        name: "",
+        totalNumberOfQuestions: 0,
+        totalMarks: 0,
+        instructions: "",
+        duration: 0, // Set default value to empty string for time duration
+        userId: ""
     }],
   };
 
-export const bookSlice = createSlice({
-    name: 'books',
+export const testSlice = createSlice({
+    name: 'tests',
     initialState: initialState,
     reducers: {},
     extraReducers: (builder) => {
-        builder.addCase(getBooks.pending, (state) => {
+        builder.addCase(getTests.pending, (state) => {
             state.isLoading = true
         })
-        builder.addCase(getBooks.fulfilled, (state, action) => {
+        builder.addCase(getTests.fulfilled, (state, action) => {
             state.isLoading = false
             state.content = action.payload
+            console.log("Test action Payload",action.payload);
         })
-        builder.addCase(getBooks.rejected, (state, action) => {
+        builder.addCase(getTests.rejected, (state, action) => {
             state.isLoading = false
             state.error = action.error
             state.content = []
         })
-        // builder.addCase(createQuestions.pending, (state) => {
-        //     state.isLoading = true
-        // })
-        // builder.addCase(createQuestions.fulfilled, (state, action) => {
-        //     state.isLoading = false
-        //     state.content = [...state.content, action.payload]
-        // })
-        // builder.addCase(createQuestions.rejected, (state, action) => {
-        //     state.isLoading = false
-        //     state.content = []
-        //     state.error = action.error
-        // })
+        builder.addCase(createTests.pending, (state) => {
+            state.isLoading = true
+        })
+        builder.addCase(createTests.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.content = [...state.content, action.payload]
+        })
+        builder.addCase(createTests.rejected, (state, action) => {
+            state.isLoading = false
+            state.content = []
+            state.error = action.error
+        })
 
         // builder.addCase(updateQuestion.pending, (state) => {
         //     state.isLoading = true
@@ -76,13 +79,6 @@ export const bookSlice = createSlice({
         //     state.isLoading = false
 
         //     state.content = state.content.map((question) => {
-
-        //         if (question._id === action.payload._id) {
-        //             return action.payload
-        //         }
-        //         else
-        //             return question
-        //     })
 
         // })
         // builder.addCase(updateQuestion.rejected, (state, action) => {
@@ -93,4 +89,4 @@ export const bookSlice = createSlice({
     }
 })
 
-export default bookSlice.reducer
+export default testSlice.reducer
