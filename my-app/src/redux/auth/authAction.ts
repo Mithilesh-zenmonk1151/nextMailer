@@ -20,6 +20,7 @@ export const registerUsers = createAsyncThunk(signupType, async(user: {name: str
     } catch (err) {
         console.log(err)
         return rejectWithValue(err)
+        rejec
     }
 })
 export const loginUsers = createAsyncThunk(loginType, async (user:{email:string,password:string}, {rejectWithValue}) => {
