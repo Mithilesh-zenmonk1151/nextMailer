@@ -18,7 +18,7 @@ function InputFieldCompo(props: TextFieldProps) {
       marginTop:"22px"
     }}>
       <label className='label-input'>{Label}</label>
-         <TextField
+         {/* <TextField
          placeholder={placeholder}
          value={value}
          type={Type}
@@ -28,7 +28,7 @@ function InputFieldCompo(props: TextFieldProps) {
           paddingTop:"14px",
           color:"white"
          }}
-      />
+      /> */}
     </Stack>
   )
 }

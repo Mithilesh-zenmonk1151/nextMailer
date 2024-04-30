@@ -29,7 +29,12 @@ export const loginUsers = createAsyncThunk(loginType, async (user:{email:string,
         const response = await loginService({email:user.email,password:user.password})
         const data = await response.data
         // console.log(data)
-        console.log("data swdfwefer",data)
+        const token=data?.loginData?.token
+        localStorage.setItem("logged", "true");
+        localStorage.setItem("token", token);
+    
+        console.log("data Loggin wala data tTTTToken ke liye",token)
+      
         return data
     }catch(err) {
         console.log(err)

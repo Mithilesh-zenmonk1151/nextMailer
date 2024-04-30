@@ -14,7 +14,7 @@ export default function ProfilePage() {
   console.log("Statesssssss",userId);
   const dispatch=useAppDispatch();
   useEffect(()=>{
-    dispatch(getTests({userId}));
+   
 
   },[dispatch])
   
