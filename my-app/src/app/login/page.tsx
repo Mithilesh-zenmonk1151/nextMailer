@@ -67,6 +67,7 @@ export default function LoginPage() {
       />
       <button onClick={onLogin}>Login</button>
       <Link href="/forgotpassword" className="text-blue-500">Forgot password</Link>
+      <Link href="/signup" className="text-blue-900">Visit signup page </Link>
        
     </div>
   );

@@ -78,7 +78,7 @@ export default function SignupPage() {
       >
         {buttonDisabled ? "No signup" : "Signup"}
       </button>
-      <Link href="/signup">Visit signup page</Link>
+      <Link href="/login" className="text-blue-500">Visit login page</Link>
     </div>
   );
 }
