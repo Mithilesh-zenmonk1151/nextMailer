@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { createQuestionType, getQuestionType } from "./questionType";
 import type { FieldValues } from "react-hook-form";
 import addQuestionService from "@/services/questionservices/addquestion";
+import fetchQuestion from "@/services/questionservices/getQuestion";
 
 export const createQuestion = createAsyncThunk(
  createQuestionType,
@@ -19,15 +20,20 @@ export const createQuestion = createAsyncThunk(
   }
 );
 
-// export const getTests = createAsyncThunk(
-//   getTestsType,
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       const response = await fetchTests();
-//       return response;
-//     } catch (err) {
-//       console.log(err);
-//       return rejectWithValue(err);
-//     }
-//   }
-// );
+export const getQuestion = createAsyncThunk(
+  getQuestionType,
+  async (testId:string, { rejectWithValue }) => {
+
+    try {
+
+
+      const response = await fetchQuestion(testId);
+      console.log("Question get TESTID===",testId)
+
+      return {response,testId};
+    } catch (err) {
+      console.log(err);
+      return rejectWithValue(err);
+    }
+  }
+);

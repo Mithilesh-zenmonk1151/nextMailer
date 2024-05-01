@@ -9,8 +9,8 @@ import React, { useEffect, useState } from "react";
 
 const TestPage = () => {
   const dispatch = useAppDispatch();
-  const router=useRouter();
-  const [testsId,setTestsId]=useState("");
+  const router = useRouter();
+  const [testsId, setTestsId] = useState("");
 
   const userId = useAppSelector(
     (state) => state.auth?.content?.loginData?.user?.uuid
@@ -22,16 +22,15 @@ const TestPage = () => {
   const test = useAppSelector((state) => state.test?.content?.tests);
 
   console.log("testsfdhtyjyu", test);
-  const handleOnTestClick=(testId:string):void=>{
+  const handleOnTestClick = (testId: string): void => {
     console.log(testId);
     // router.push("/add-question")
-    console.log("BUTTOONNsdfgd")
+    console.log("BUTTOONNsdfgd");
     router.push(`/add-question?testId=${testId}`);
 
     setTestsId(testId);
-
-  }
-console.log("Original Test Id",testsId);
+  };
+  console.log("Original Test Id", testsId);
   return (
     <Box
       sx={{
@@ -46,7 +45,7 @@ console.log("Original Test Id",testsId);
       {test?.map(
         (tests: {
           uuid: string;
-          id:string;
+          id: string;
           name: string;
           totalNumberOfQuestions: number;
           duration: number;
@@ -60,7 +59,7 @@ console.log("Original Test Id",testsId);
               duration={tests.duration}
               totalMarks={tests.totalMarks}
               instructions={tests.instructions}
-              handleAddTestClick={()=>handleOnTestClick(tests?.uuid)}
+              handleAddTestClick={() => handleOnTestClick(tests?.uuid)}
             />
           </Box>
         )

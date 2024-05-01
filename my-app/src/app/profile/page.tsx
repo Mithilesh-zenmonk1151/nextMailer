@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { getTests } from "@/redux/test/testAction";
+import profile from "@/app/ui/profile.module.css"
 
 export default function ProfilePage() {
   const [data,setData]= React.useState("nothing")

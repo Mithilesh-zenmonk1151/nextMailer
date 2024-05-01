@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { createQuestion } from './questionAction';
+import { createQuestion, getQuestion } from './questionAction';
 
 export type questions = {
     id: string,
@@ -10,7 +10,7 @@ export type questions = {
     option3:string;
     option4:string;
    weightage:number,
-   testId: string;
+   testId?: string;
 
 
 
@@ -27,7 +27,7 @@ type initialStateProps = {
         option3:string;
         option4:string;
         weightage: number; // Change type to string
-        testId: string;
+        testId?: string;
     }[] 
     error: Object | null;
   };
@@ -52,19 +52,19 @@ export const questionSlice = createSlice({
     initialState: initialState,
     reducers: {},
     extraReducers: (builder) => {
-        // builder.addCase(getTests.pending, (state) => {
-        //     state.isLoading = true
-        // })
-        // builder.addCase(getTests.fulfilled, (state, action) => {
-        //     state.isLoading = false
-        //     state.content = action.payload
-        //     console.log("Test action Payload",action.payload);
-        // })
-        // builder.addCase(getTests.rejected, (state, action) => {
-        //     state.isLoading = false
-        //     state.error = action.error
-        //     state.content = []
-        // })
+        builder.addCase(getQuestion.pending, (state) => {
+            state.isLoading = true
+        })
+        builder.addCase(getQuestion.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.content = action.payload
+            console.log("question action Payload",action.payload);
+        })
+        builder.addCase(getQuestion.rejected, (state, action) => {
+            state.isLoading = false
+            state.error = action.error
+            state.content = []
+        })
         builder.addCase(createQuestion.pending, (state) => {
             state.isLoading = true
         })

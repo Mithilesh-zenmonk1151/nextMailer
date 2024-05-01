@@ -7,6 +7,7 @@ import type { FieldValues } from "react-hook-form";
 import axios from "axios";
 import { useAppDispatch } from "@/store/hooks";
 import { registerUsers } from "@/redux/auth/authAction";
+import style from "@/app/ui/home.module.css"
 export default function SignupPage() {
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -41,9 +42,10 @@ export default function SignupPage() {
     }
   }, [user]);
   return (
-    <div className="flex flex-col content-center justify-center w-[100%] ">
-      <h1>Signup</h1>
-      <label htmlFor="username">username</label>
+    <div className={style.signup}>
+      <div className={style.signupbody}>
+      <h1 className={style.headingS}>Signup</h1>
+      <label className={style.labelS} htmlFor="username">username</label>
       <input
         type="text"
         value={user.name}
@@ -51,34 +53,35 @@ export default function SignupPage() {
         onChange={(e) => setUser({ ...user, name: e.target.value })}
         name="username"
         id="username"
-        className="text-black w-[20%]"
+        className={style.labelI}
       />
-      <label htmlFor="email">Email</label>
+      <label className={style.labelS} htmlFor="email">Email</label>
       <input
         type="email"
         placeholder="enter your email "
         name="email"
         onChange={(e) => setUser({ ...user, email: e.target.value })}
         value={user.email}
-        className="text-black w-[20%]"
+        className={style.labelI}
       />
-      <label htmlFor="password">Password</label>
+      <label className={style.labelS} htmlFor="password">Password</label>
       <input
         type="password"
         placeholder="......"
         name="password"
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         value={user.password}
-        className="text-black w-[20%]"
+        className={style.labelI}
       />
       <button
         onClick={onSignup}
         disabled={buttonDisabled}
-        className="text-white bg-red max-w-fit"
+        className={style.btnS}
       >
         {buttonDisabled ? "No signup" : "Signup"}
       </button>
-      <Link href="/login" className="text-blue-500">Visit login page</Link>
+      <Link href="/login" className={style.visitL}>Visit login page</Link>
+      </div>
     </div>
   );
 }

@@ -3,10 +3,12 @@ import UserTestCard from '@/components/userTestCard/UserTestCard';
 import { getTests } from '@/redux/test/testAction';
 import { useAppDispatch, useAppSelector } from '@/store/hooks'
 import { Box } from '@mui/material'
+import { useRouter } from 'next/navigation';
 import React, { useEffect } from 'react'
 
 export default function UserPage() {
     const dispatch=useAppDispatch();
+    const router= useRouter();
 
 
     useEffect(() => {
@@ -20,7 +22,7 @@ export default function UserPage() {
         console.log(testId);
         // router.push("/add-question")
         console.log("BUTTOONNsdfgd")
-        // router.push(`/add-question?testId=${testId}`);
+        router.push(`/starttest?testId=${testId}`);
     
         // setTestsId(testId);
     

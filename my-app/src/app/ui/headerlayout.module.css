@@ -1,0 +1,19 @@
+.navbar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   
+}
+.rightnav{
+    display: flex;
+}
+.ulnav{
+    display: flex;
+    gap: 30px;
+}
+.searchbar{
+    border-radius: 20px;
+    box-shadow: 20px 20px 60px #00000041,inset -20px -20px 60px #ffffff40 ;
+
+
+}

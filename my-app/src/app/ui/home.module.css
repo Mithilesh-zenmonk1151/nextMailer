@@ -1,0 +1,60 @@
+.start{
+    background-color: white !important;
+   color: black !important;
+ 
+}
+.teststart{
+    background-color: aliceblue !important;
+    height: 100vh !important;
+}
+.signup{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.signupbody{
+    display: flex;
+    flex-direction: column;
+    background-color: #E0E0E0;
+    color: black;
+    height: 650px;
+    width: 600px;
+    padding: 70px;
+    gap: 20px;
+    
+    border-radius: 50px;
+    box-shadow: 20px 20px 60px #00000041,inset -20px -20px 60px #ffffff40 ;
+    justify-content: center;
+
+}
+.headingS{
+    font-size: 30px;
+    font-family: "Inter";
+    font-weight: 800;
+
+}
+.labelS{
+    font-size: 20px;
+}
+.labelI{
+    width: 50%;
+    border-radius: 10px;
+    padding: 5px;
+    height: 45px;
+}
+.btnS{
+    background-color: rgb(9, 115, 236);
+    width: 20%;
+    position: relative;
+    left: 10px;
+    height: 45px;
+    width: 130px;
+    border-radius: 30px;
+}
+.visitL{
+    color: rgb(108, 108, 247);
+    padding: 10px;
+
+}
