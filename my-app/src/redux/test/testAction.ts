@@ -10,10 +10,10 @@ export const createTests = createAsyncThunk(
  createTestsType,
   async (test:{name:string, totalNumberOfQuestions:number,totalMarks:number,instructions:string, duration:number,userId: string}, { rejectWithValue }) => {
     try {
-      console.log("Slice wala teststssss",test);
+      // console.log("Slice wala teststssss",test);
       const response = await createTestService(test);
       const data = response?.data;
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (err) {
       console.log(err);

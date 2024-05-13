@@ -1,14 +1,7 @@
-import axios from "axios";
-import type { FieldValues } from "react-hook-form";
-const fetchQuestion = async (testId: FieldValues) => {
-    try {
-        console.log("IIINNNPPUUUTT=====",testId);
-        const response = await axios.get(`api/question/getquestion`,  testId );
-        console.log("console responser.data=======service==",response.data);
-        return response.data;
-    } catch (error) {
-        console.error("Error fetching tests:", error);
-        return null;
+import axios from "axios"
+ const fetchBook = async (testId: string|string[]) => {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/api/question/${testId}`)
+        const resp = await response.json()
+        return resp
     }
-};
-export default fetchQuestion;
+export default fetchBook

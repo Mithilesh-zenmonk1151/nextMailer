@@ -4,6 +4,7 @@ import { createQuestion, getQuestion } from './questionAction';
 export type questions = {
     id: string,
     title:string,
+    uuid:string,
     correctOption:string,
     option1:string;
     option2:string;
@@ -21,6 +22,7 @@ type initialStateProps = {
     isLoading: boolean;
     content: {
         title: string;
+        id:string;
         correctOption: string;
         option1:string;
         option2:string;
@@ -28,6 +30,7 @@ type initialStateProps = {
         option4:string;
         weightage: number; // Change type to string
         testId?: string;
+        uuid:string;
     }[] 
     error: Object | null;
   };
@@ -37,6 +40,8 @@ type initialStateProps = {
     error: null,
     content: [{
         title: "",
+        id:"",
+        uuid:"",
         correctOption: "",
         option1: "",
         option2: "",
@@ -58,7 +63,7 @@ export const questionSlice = createSlice({
         builder.addCase(getQuestion.fulfilled, (state, action) => {
             state.isLoading = false
             state.content = action.payload
-            console.log("question action Payload",action.payload);
+            // console.log("question action Payload",action.payload);
         })
         builder.addCase(getQuestion.rejected, (state, action) => {
             state.isLoading = false
@@ -71,7 +76,7 @@ export const questionSlice = createSlice({
         builder.addCase(createQuestion.fulfilled, (state, action) => {
             state.isLoading = false
             state.content = [...state.content, action.payload]
-            console.log("State......Content",state.content);
+            // console.log("State......Content",state.content);
         })
         builder.addCase(createQuestion.rejected, (state, action) => {
             state.isLoading = false

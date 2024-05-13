@@ -48,7 +48,7 @@ export default function SignupPage() {
       <label className={style.labelS} htmlFor="username">username</label>
       <input
         type="text"
-        value={user.name}
+        value={user.name}`                    `
         placeholder="username..."
         onChange={(e) => setUser({ ...user, name: e.target.value })}
         name="username"
